@@ -1,7 +1,7 @@
 import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
-import api from '@/utils/ky'
+import api, { PREFIX_URL } from '@/utils/ky'
 import { useSignStore } from '@/stores/sign'
 import type { UserProfile, Whisper, WhisperDraft, WhisperTab } from '@/types/whisper'
 import { getApiErrorMessage } from '@/utils/api-error'
@@ -45,7 +45,7 @@ export function useWhispers() {
   }
 
   function signIn() {
-    window.location.assign('/api/sign?state=emos_whisper')
+    window.location.assign(`${PREFIX_URL}api/sign?state=emos_whisper`)
   }
 
   async function loadProfile() {
